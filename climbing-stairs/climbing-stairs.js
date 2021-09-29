@@ -3,19 +3,9 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-    const cache = {};
-    return climb(0, cache, n);
-}
-var climb = (step, cache, last) => {
-    if (step in cache) {
-        return cache[step];
-    } else {
-        if (step > last) return 0;
-        if (step === last) {
-            return 1;
-        } else {
-            cache[step] = climb(step + 1, cache, last) + climb(step + 2, cache, last);
-        }
-        return cache[step];
+    const table = Array(n+1).fill(1);
+    for (let i = 2; i < table.length; i++) {
+        table[i] = table[i - 1] + table[i - 2];
     }
+    return table[n];
 };
