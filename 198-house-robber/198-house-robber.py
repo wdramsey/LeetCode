@@ -11,3 +11,5 @@ class Solution(object):
             current = nums[index]
             table[index + 1] = max(table[index], current + table[index - 1])
         return table[len(table)-1]
+        
+        
