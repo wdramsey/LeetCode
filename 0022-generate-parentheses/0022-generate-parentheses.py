@@ -17,8 +17,9 @@ class Solution(object):
                     helper(currStr + ")",left,right-1)
             else:
                 result.append(currStr)
-        helper("",n,n)
-        return result
+            return result
+        return helper("",n,n)
+
        
     
     
