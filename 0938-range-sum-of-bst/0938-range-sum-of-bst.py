@@ -1,27 +1,28 @@
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @param {number} low
- * @param {number} high
- * @return {number}
- */
-var rangeSumBST = function(root, low, high) {
-    var result = 0
-    var helper = (root,low,high) => {
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
 
-        if (root.val >= low && root.val <= high) {
-            result += root.val;
-        }
-        if (root.left !== null) helper(root.left, low, high);
-        if (root.right !== null) helper(root.right, low, high);
-        return result
-    }
-    return helper(root,low,high);
-};
+    def rangeSumBST(self, root, low, high):
+        """
+        :type root: TreeNode
+        :type low: int
+        :type high: int
+        :rtype: int
+        """
+        self.result = 0
+
+        def helper(root,low,high):
+
+            if (root.val <= high and root.val >= low):
+                self.result += root.val
+            if (root.left != None): 
+                helper(root.left, low, high)
+            if (root.right != None): 
+                helper(root.right, low, high)
+
+            return self.result
+        return helper(root,low,high)
