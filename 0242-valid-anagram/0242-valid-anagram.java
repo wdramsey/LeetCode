@@ -9,7 +9,6 @@ class Solution {
             int count = smap.getOrDefault(t.charAt(i), 0);
             if (count == 0) return false;
             else smap.put(t.charAt(i), count - 1);
-            System.out.println(smap);
         }
         return true;
     }
