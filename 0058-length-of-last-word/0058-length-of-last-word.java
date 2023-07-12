@@ -1,9 +1,16 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        if (s.charAt(s.length() - 1) == ' ') {
-            String [] temp = s.split(" ");
-            return temp[temp.length - 1].length();
-        } else return s.length() - 1 - s.lastIndexOf(" ");
-        
+        int answer = 0;
+        if (s.charAt(s.length() - 1) != ' ') {
+            answer = (s.length() - 1 - s.lastIndexOf(" "));
+        } else {
+            for (int i = s.length() - 2; i >= 0; i--) {
+                if (s.charAt(i) != ' ') answer++;
+                else if (answer > 0) {
+                    return answer;
+                }
+            }
+        }
+        return answer;
     }
 }
